@@ -36,9 +36,15 @@ h1{
     margin: 0;
 }
 
-#elementy{
-    display: flex;
+#uslugi{
     justify-content: center;
+}
+
+#elementy{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 70%;
+    margin-left: 300px;
     gap: 30px;
 }
 
@@ -58,4 +64,50 @@ h1{
 
 .uslugi-element h2{
     color: #1d579e;
+}
+
+#statystyki{
+    margin-top: 50px;
+    height: 200px;
+    background-color: #1d5dbc;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+    color: white;
+}
+
+#statystyki h2{
+    padding-top: 15px;
+    font-size: 40px;
+}
+
+#statystyki h4{
+    font-size: 20px;
+}
+
+#dzialanie h1{
+    padding-bottom: 15px;
+    color: black;
+    margin-top: 0;
+}
+
+#dzielementy{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.dzelement{
+    text-align: center;
+    width: 350px;
+}
+
+.dzelement h2{
+    color: #1c579f;
+}
+
+.dzelement h3{
+    color: #003267;
 }
