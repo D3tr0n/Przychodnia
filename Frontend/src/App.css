@@ -1,1 +1,11 @@
 
+#baner{
+    width: 100%;
+    height: auto;
+}
+
+#baner img{
+    width: 100%;
+    height: auto;
+    display: block;
+}

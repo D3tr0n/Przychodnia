@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import logo from './assets/prohealth.png'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { Routes, Route, Link } from 'react-router-dom'
 
+import Glowna from './pages/Glowna'
 import Onas from './pages/Onas'
 import Kontakt from './pages/Kontakt'
 import Wizyta from './pages/Wizyta'
@@ -27,6 +27,7 @@ function App() {
 
 
         <div id="zakladki">
+          <Link to="/glowna">Strona Główna</Link>
           <Link to="/onas">O nas</Link>
           <Link to="/kontakt">Kontakt</Link>
           <Link to="/wizyta">Wizyta</Link>
@@ -34,20 +35,52 @@ function App() {
 
   
       
-
-
-
       <div id="login">
     <Link to="/login">Zaloguj się</Link>
       </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <Routes>
+        <Route path="/glowna" element={<Glowna />} />
         <Route path="/onas" element={<Onas />} />
         <Route path="/kontakt" element={<Kontakt />} />
         <Route path="/wizyta" element={<Wizyta />} />
         <Route path="/login" element={<Login />} />
       </Routes>
+
+    <footer>
+        <p>© 2025 ProHealth. Wszystkie prawa zastrzeżone.</p>
+      </footer>
+
+
+
 
     </>
   )
