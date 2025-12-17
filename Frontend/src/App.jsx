@@ -2,6 +2,14 @@ import { useState } from 'react'
 import logo from './assets/prohealth.png'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Routes, Route, Link } from 'react-router-dom'
+
+import Onas from './pages/Onas'
+import Kontakt from './pages/Kontakt'
+import Wizyta from './pages/Wizyta'
+import Login from './pages/Login'
+
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,21 +26,30 @@ function App() {
 
 
 
-      <div id='zakladki'>
+        <div id="zakladki">
+          <Link to="/onas">O nas</Link>
+          <Link to="/kontakt">Kontakt</Link>
+          <Link to="/wizyta">Wizyta</Link>
+        </div>
 
-      <a href="App.jsx">Strona Główna</a>
-      <a href="pages/Onas.jsx">O nas</a>
-      <a href="pages/">Kontakt</a>
-      <a href="pages/">Wizyta</a>
+        <div id="login">
+          <Link to="/login">Zaloguj się</Link>
+        </div>
+      
 
+
+
+      <div id="login">
+    <Link to="/login">Zaloguj się</Link>
       </div>
-
-      <div id='login'>
-        <a href="pages/login.jsx">Zaloguj się</a>
-      </div>
-
     </div>
 
+      <Routes>
+        <Route path="/onas" element={<Onas />} />
+        <Route path="/kontakt" element={<Kontakt />} />
+        <Route path="/wizyta" element={<Wizyta />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
 
     </>
   )
