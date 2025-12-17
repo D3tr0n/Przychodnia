@@ -44,7 +44,7 @@ return (
 
 
     <div id='zdjecie2'>
-        <div id='zlewo2'>W 2025r. nasza przychodnia wyposarzyła się w najwocześniejszy aparat EKG. Dzięki, któremu jesteśmy w stanie przeprowadzić szybkie i precyzyjne badania serca.</div>
+        <div id='zlewo2'>W 2025r. nasza przychodnia wyposażyła się w najwocześniejszy aparat EKG. Dzięki, któremu jesteśmy w stanie przeprowadzić szybkie i precyzyjne badania serca.</div>
         <div id='zprawo2'><img src={ekg} alt="ekg" /></div>
     </div>
 
