@@ -12,6 +12,7 @@
     font-size: 24px;
     color: #333;
     font-family: Arial, sans-serif;
+    pointer-events: none;
 }
 #godziny{
     padding-top: 90px;
