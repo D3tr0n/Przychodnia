@@ -1,6 +1,10 @@
 import baner from './media/baner.jpg'
 import React from 'react'
 import './CSS/Glowna.css'
+import wnetrze from './media/wnetrze.jpg'
+import ekg from './media/ekg.jpeg'
+
+
 
 export default function Glowna() {
 return (
@@ -28,10 +32,17 @@ return (
         </p>
     </div>
 
+    <div id='zdjecie1'>
+        <div id='zlewo'><img src={wnetrze} alt="wnetrze" /></div>
+        <div id='zprawo'>Nasza przychodnia oferuje nowoczesne i komfortowe warunki dla Pacjentów, zapewniając przyjazną atmosferę oraz dostęp do najnowszych technologii medycznych.</div>
+
+    </div>
 
 
-
-
+    <div id='zdjecie2'>
+        <div id='zlewo2'>W 2025r. nasza przychodnia wyposarzyła się w najwocześniejszy aparat EKG. Dzięki, któremu jesteśmy w stanie przeprowadzić szybkie i precyzyjne badania serca.</div>
+        <div id='zprawo2'><img src={ekg} alt="ekg" /></div>
+    </div>
 
 
 

@@ -50,3 +50,54 @@
 
   position: relative; 
 }
+
+
+#zdjecie1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1600px;
+  margin: 30px auto;
+  padding-top: 40px;
+}
+#zlewo img {
+  width: 900px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#zprawo {
+  max-width: 900px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #003366;
+}
+
+
+#zdjecie2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1600px;
+  margin: 30px auto;
+  padding-top: 40px;
+}
+
+#zlewo2 {
+  max-width: 900px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #003366;
+}
+
+#zprawo2 img {
+  width: 900px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
