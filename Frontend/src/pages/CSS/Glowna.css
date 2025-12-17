@@ -24,7 +24,8 @@
   box-shadow: 2px 4px 8px rgba(0,0,0,0.1); 
   font-family: Arial, sans-serif;
   font-size: 16px;
-  text-align: center;         
+  text-align: center;     
+  font-weight: bold;
 }
 
 #bloki p:hover {
@@ -32,4 +33,20 @@
   box-shadow: 4px 8px 16px rgba(0,0,0,0.2); 
   transform: translateY(-5px); 
   transition: all 0.3s ease;  
+}
+
+#blok2 {
+  background: linear-gradient(145deg, #d0e7ff, #f0f9ff);
+  border: none; 
+  border-radius: 25px 5px 25px 5px; 
+  padding: 25px 30px;
+  max-width: 1300px;
+  margin: 30px auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #003366;
+
+  position: relative; 
 }
