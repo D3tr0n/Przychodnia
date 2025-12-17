@@ -8,7 +8,7 @@ import lekarz2 from './media/lekarz2.jpg'
 import lekarz3 from './media/lekarz3.jpg'
 import lekarz4 from './media/lekarz4.png'
 import lekarz5 from './media/lekarz5.png'
-
+import kpo from './media/kpo.png'
 
 export default function Glowna() {
 return (
@@ -82,10 +82,85 @@ return (
     </div>
 </div>
 
-    <div>
+
+
+
+    <div id='scianatekstu'>
+
+    <h1>ProHealth - Twoja zaufana przychodnia w Rzeszowie</h1>
+
+    <p>
+    ProHealth to nowoczesna przychodnia medyczna w Rzeszowie, oferująca
+    kompleksową opiekę zdrowotną dla dzieci i dorosłych. Zapewniamy szeroki
+    zakres usług medycznych, nowoczesne zaplecze diagnostyczne oraz
+    doświadczony zespół lekarzy i specjalistów. Naszą misją jest troska
+    o zdrowie Pacjentów oraz zapewnienie szybkiej, rzetelnej i komfortowej
+    opieki w przyjaznej atmosferze.
+    </p>
+
+    <h2>Szeroka oferta usług medycznych</h2>
+
+    <p>
+    W przychodni ProHealth oferujemy kompleksowe świadczenia zdrowotne,
+    obejmujące zarówno profilaktykę, diagnostykę, jak i leczenie.
+    W naszej ofercie znajdują się m.in.:
+    </p>
+
+    <ul>
+        <li>konsultacje lekarza rodzinnego i lekarzy specjalistów</li>
+        <li>badania diagnostyczne i laboratoryjne</li>
+        <li>badania krwi – morfologia, lipidogram, badania tarczycy, poziom glukozy</li>
+        <li>badania moczu i kału</li>
+        <li>konsultacje profilaktyczne i kontrolne</li>
+    </ul>
+
+    <p>
+        Dzięki szerokiej ofercie usług Pacjenci mogą liczyć na kompleksową
+        opiekę medyczną w jednym miejscu. Każdy Pacjent traktowany jest
+        indywidualnie, z pełnym zaangażowaniem i dbałością o komfort wizyty.
+    </p>
+
+    <h2>Badania i diagnostyka – profesjonalizm i wygoda</h2>
+
+    <p>
+        Badania diagnostyczne stanowią kluczowy element skutecznej opieki
+        zdrowotnej. W ProHealth zapewniamy szybki dostęp do badań oraz sprawną
+        obsługę na każdym etapie wizyty. Korzystamy z nowoczesnego sprzętu
+        diagnostycznego, a wyniki badań dostępne są w krótkim czasie.
+        Wszystkie procedury wykonywane są w komfortowych i bezpiecznych warunkach.
+    </p>
+
+    <h2>Przychodnia ProHealth w Rzeszowie</h2>
+
+    <p>
+        ProHealth to nowoczesna przychodnia w Rzeszowie, zaprojektowana
+        z myślą o komforcie Pacjentów. Dogodna lokalizacja oraz elastyczne
+        godziny przyjęć pozwalają łatwo dopasować wizytę do codziennych obowiązków.
+    </p>
+
+    <h2>Dlaczego warto wybrać ProHealth?</h2>
+
+    <ul>
+        <li>kompleksowa opieka medyczna w jednym miejscu</li>
+        <li>nowoczesne zaplecze diagnostyczne</li>
+        <li>szybkie terminy wizyt i badań</li>
+        <li>komfortowe warunki leczenia i diagnostyki</li>
+        <li>indywidualne podejście do każdego Pacjenta</li>
+    </ul>
+    <p>
+        Stawiamy na jakość, rzetelność i bezpieczeństwo. Wybierając ProHealth,
+        wybierasz profesjonalną opiekę medyczną, zaufanie i komfort na każdym
+        etapie leczenia.
+    </p>
+
+
+
 
     </div>
 
+    <div id='kpo'>
+        <img src={kpo} alt="KPO" />
+    </div>
 
 
 </div>
