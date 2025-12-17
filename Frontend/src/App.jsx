@@ -2,33 +2,63 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import logo from './assets/prohealth.png' 
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        elo
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+
+     <div id='gora'>
+
+
+      <div id='logo'>
+        <img src={logo} alt="Logo Przychodni" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div id='zakladki'>
+        <a href="#">Strona Główna </a>
+        <a href="#">O Nas </a>
+        <a href="#">Usługi </a>
+        <a href="#">Kontakt</a>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     </>
   )
 }
