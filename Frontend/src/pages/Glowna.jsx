@@ -3,7 +3,11 @@ import React from 'react'
 import './CSS/Glowna.css'
 import wnetrze from './media/wnetrze.jpg'
 import ekg from './media/ekg.jpeg'
-
+import lekarz1 from './media/lekarz1.jpg'
+import lekarz2 from './media/lekarz2.jpg'
+import lekarz3 from './media/lekarz3.jpg'
+import lekarz4 from './media/lekarz4.png'
+import lekarz5 from './media/lekarz5.png'
 
 
 export default function Glowna() {
@@ -44,7 +48,43 @@ return (
         <div id='zprawo2'><img src={ekg} alt="ekg" /></div>
     </div>
 
+    <h1>Nasi lekarze</h1>
+    <div id="lekarze">
 
+    <div className="lekarz">
+
+        <img src={lekarz1} alt="Jan Kowalski" />
+        <p>dr Jan Kowalski</p>
+    </div>
+
+    <div className="lekarz">
+
+        <img src={lekarz2} alt="Anna Nowak" />
+        <p>dr Anna Nowak</p>
+    </div>
+
+    <div className="lekarz">
+
+        <img src={lekarz3} alt="Piotr Wiśniewski" />
+        <p>dr Piotr Wiśniewski</p>
+    </div>
+
+    <div className="lekarz">
+
+        <img src={lekarz4} alt="Katarzyna Mazur" />
+        <p>dr Katarzyna Mazur</p>
+    </div>
+
+    <div className="lekarz">
+
+        <img src={lekarz5} alt="Tomasz Zieliński" />
+        <p>dr Tomasz Zieliński</p>
+    </div>
+</div>
+
+    <div>
+
+    </div>
 
 
 
