@@ -1,3 +1,6 @@
+import './CSS/Kontakt.css'
+
+
 export default function Kontakt() {
   return (
     <div>
