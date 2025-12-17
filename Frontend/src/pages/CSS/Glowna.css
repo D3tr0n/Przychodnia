@@ -23,7 +23,7 @@
   max-width: 220px;           
   box-shadow: 2px 4px 8px rgba(0,0,0,0.1); 
   font-family: Arial, sans-serif;
-  font-size: 16px;
+  font-size: 19px;
   text-align: center;     
   font-weight: bold;
 }
@@ -44,7 +44,7 @@
   margin: 30px auto;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
   font-family: 'Segoe UI', sans-serif;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.6;
   color: #003366;
 
@@ -144,4 +144,18 @@ h1 {
     font-size: 16px;
     font-weight: 600;
     color: #003366;
+}
+
+
+#scianatekstu{
+    background-color: #f0f8ff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #003366;
+    max-width: 1200px;
+    margin: 40px auto;
 }
