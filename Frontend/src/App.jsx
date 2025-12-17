@@ -32,9 +32,7 @@ function App() {
           <Link to="/wizyta">Wizyta</Link>
         </div>
 
-        <div id="login">
-          <Link to="/login">Zaloguj się</Link>
-        </div>
+  
       
 
 
