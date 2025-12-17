@@ -65,14 +65,14 @@ return (
 
     <div id="lekarz">
 
-        <img src={lekarz3} alt="Piotr Wiśniewski" />
-        <p>dr Piotr Wiśniewski</p>
+        <img src={lekarz3} alt="Katarzyna Mazur" />
+        <p>dr Katarzyna Mazur</p>
     </div>
 
     <div id="lekarz">
 
-        <img src={lekarz4} alt="Katarzyna Mazur" />
-        <p>dr Katarzyna Mazur</p>
+        <img src={lekarz4} alt="Piotr Wiśniewski" />
+        <p>dr Piotr Wiśniewski</p>
     </div>
 
     <div id="lekarz">
