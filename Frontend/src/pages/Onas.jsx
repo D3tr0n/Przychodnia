@@ -47,7 +47,7 @@ export default function Onas(){
 
                         <img src={kardiologialogo} alt="Kardiologia Logo"/>
 
-                        <h1>Kardiologia</h1>
+                        <h2>Kardiologia</h2>
 
                         <h3>
                             Dbamy o zdrowie Twojego serca, pomagając wykryć problemy na wczesnym etapie i dobrać najlepsze leczenie,
@@ -60,7 +60,7 @@ export default function Onas(){
 
                         <img src={neurologialogo} alt="Neurologia Logo"/>
 
-                        <h1>Neurologia</h1>
+                        <h2>Neurologia</h2>
 
                         <h3>Pomagamy zrozumieć i leczyć dolegliwości związane z układem nerwowym,
                             aby poprawić komfort Twojego życia i codziennego funkcjonowania.
@@ -72,7 +72,7 @@ export default function Onas(){
 
                         <img src={urologialogo} alt="Urologia Logo"/>
 
-                        <h1>Urologia</h1>
+                        <h2>Urologia</h2>
 
                         <h3>Oferujemy dyskretną i profesjonalną pomoc w problemach układu moczowego,
                             stawiając na komfort, zaufanie i skuteczne leczenie.
