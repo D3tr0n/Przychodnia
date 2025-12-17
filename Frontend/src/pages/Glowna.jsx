@@ -51,31 +51,31 @@ return (
     <h1>Nasi lekarze</h1>
     <div id="lekarze">
 
-    <div className="lekarz">
+    <div id="lekarz">
 
         <img src={lekarz1} alt="Jan Kowalski" />
         <p>dr Jan Kowalski</p>
     </div>
 
-    <div className="lekarz">
+    <div id="lekarz">
 
         <img src={lekarz2} alt="Anna Nowak" />
         <p>dr Anna Nowak</p>
     </div>
 
-    <div className="lekarz">
+    <div id="lekarz">
 
         <img src={lekarz3} alt="Piotr Wiśniewski" />
         <p>dr Piotr Wiśniewski</p>
     </div>
 
-    <div className="lekarz">
+    <div id="lekarz">
 
         <img src={lekarz4} alt="Katarzyna Mazur" />
         <p>dr Katarzyna Mazur</p>
     </div>
 
-    <div className="lekarz">
+    <div id="lekarz">
 
         <img src={lekarz5} alt="Tomasz Zieliński" />
         <p>dr Tomasz Zieliński</p>
@@ -109,7 +109,7 @@ return (
     <ul>
         <li>konsultacje lekarza rodzinnego i lekarzy specjalistów</li>
         <li>badania diagnostyczne i laboratoryjne</li>
-        <li>badania krwi – morfologia, lipidogram, badania tarczycy, poziom glukozy</li>
+        <li>badania krwi - morfologia, lipidogram, badania tarczycy, poziom glukozy</li>
         <li>badania moczu i kału</li>
         <li>konsultacje profilaktyczne i kontrolne</li>
     </ul>
@@ -120,7 +120,7 @@ return (
         indywidualnie, z pełnym zaangażowaniem i dbałością o komfort wizyty.
     </p>
 
-    <h2>Badania i diagnostyka – profesjonalizm i wygoda</h2>
+    <h2>Badania i diagnostyka - profesjonalizm i wygoda</h2>
 
     <p>
         Badania diagnostyczne stanowią kluczowy element skutecznej opieki
