@@ -8,6 +8,7 @@ import Onas from './pages/Onas'
 import Kontakt from './pages/Kontakt'
 import Wizyta from './pages/Wizyta'
 import Login from './pages/Login'
+import Rejestracja from './pages/Rejestracja'
 
 
 
@@ -73,6 +74,7 @@ function App() {
         <Route path="/kontakt" element={<Kontakt />} />
         <Route path="/wizyta" element={<Wizyta />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/rejestracja" element={<Rejestracja />} />
       </Routes>
 
     <footer>
