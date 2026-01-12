@@ -1,18 +1,21 @@
 import { useState } from 'react'
 import logo from './assets/prohealth.png'
 import './App.css'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
 
 import Glowna from './pages/Glowna'
 import Onas from './pages/Onas'
 import Kontakt from './pages/Kontakt'
 import Wizyta from './pages/Wizyta'
 import Login from './pages/Login'
+import PanelUzytkownika from './pages/PanelUzytkownika'
 
 
 
 function App() {
-  const [count, setCount] = useState(0)
+    const location = useLocation()
+    const isPanel = location.pathname.startsWith('/PanelUzytkownika')
+
 
   return (
     <>
@@ -27,18 +30,34 @@ function App() {
 
 
         <div id="zakladki">
-          <Link to="/glowna">Strona Główna</Link>
-          <Link to="/onas">O nas</Link>
-          <Link to="/kontakt">Kontakt</Link>
-          <Link to="/wizyta">Wizyta</Link>
+          {isPanel ? (
+            <>
+
+              <Link to="/PanelUzytkownika">Moje Dane</Link>
+              
+
+            </>
+          ) : (
+            <>
+
+              <Link to="/glowna">Strona Główna</Link>
+              <Link to="/onas">O nas</Link>
+              <Link to="/kontakt">Kontakt</Link>
+              <Link to="/wizyta">Wizyta</Link>
+              <Link to="/PanelUzytkownika">Panel Użytkownika</Link>
+
+            </>
+          )}
         </div>
 
-  
-      
-      <div id="login">
-    <Link to="/login">Zaloguj się</Link>
+        <div id="login">
+
+          {isPanel ? <Link to="/glowna">Wyloguj się</Link> : 
+          <Link to="/login">Zaloguj się</Link>}
+
+
+        </div>
       </div>
-    </div>
 
 
 
@@ -73,6 +92,7 @@ function App() {
         <Route path="/kontakt" element={<Kontakt />} />
         <Route path="/wizyta" element={<Wizyta />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/PanelUzytkownika" element={<PanelUzytkownika />} />
       </Routes>
 
     <footer>
