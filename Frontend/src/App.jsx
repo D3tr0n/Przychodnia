@@ -10,6 +10,7 @@ import Wizyta from './pages/Wizyta'
 import Login from './pages/Login'
 import PanelUzytkownika from './pages/PanelUzytkownika'
 import Rezerwacja from './pages/Rezerwacja'
+import PanelLekarza from './pages/PanelLekarza'
 
 
 
@@ -36,6 +37,7 @@ function App() {
 
               <Link to="/PanelUzytkownika">Moje Dane</Link>
               <Link to="/Rezerwacja">Rezerwacja</Link>
+            
               
 
             </>
@@ -96,6 +98,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/PanelUzytkownika" element={<PanelUzytkownika />} />
         <Route path="/Rezerwacja" element={<Rezerwacja />} />
+        <Route path="/PanelLekarza" element={<PanelLekarza />} />
       </Routes>
 
     <footer>
