@@ -37,7 +37,11 @@ function App() {
   
       
       <div id="login">
-    <Link to="/login">Zaloguj się</Link>
+        <Link to="/login">Zaloguj się</Link>
+      </div>
+
+      <div id="login">
+        <Link to="/rejestracja">Zarejestruj się</Link>
       </div>
     </div>
 
