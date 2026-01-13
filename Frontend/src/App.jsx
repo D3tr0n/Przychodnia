@@ -11,12 +11,12 @@ import Login from './pages/Login'
 import PanelUzytkownika from './pages/PanelUzytkownika'
 import Rezerwacja from './pages/Rezerwacja'
 import PanelLekarza from './pages/PanelLekarza'
-
+import DiagnozaZalecenia from './pages/DiagnozaZalecenia'
 
 
 function App() {
     const location = useLocation()
-    const isPanel = location.pathname.startsWith('/PanelUzytkownika') || location.pathname.startsWith('/Rezerwacja')
+    const isPanel = location.pathname.startsWith('/PanelUzytkownika') || location.pathname.startsWith('/Rezerwacja') || location.pathname.startsWith('/DiagnozaZalecenia')
 
 
   return (
@@ -37,6 +37,7 @@ function App() {
 
               <Link to="/PanelUzytkownika">Moje Dane</Link>
               <Link to="/Rezerwacja">Rezerwacja</Link>
+              <Link to="/DiagnozaZalecenia">Diagnoza i Zalecenia</Link>
             
               
 
@@ -49,6 +50,7 @@ function App() {
               <Link to="/kontakt">Kontakt</Link>
               <Link to="/wizyta">Wizyta</Link>
               <Link to="/PanelUzytkownika">Panel Użytkownika</Link>
+              <Link to="/PanelLekarza">Panel Lekarza</Link>
 
             </>
           )}
@@ -99,6 +101,7 @@ function App() {
         <Route path="/PanelUzytkownika" element={<PanelUzytkownika />} />
         <Route path="/Rezerwacja" element={<Rezerwacja />} />
         <Route path="/PanelLekarza" element={<PanelLekarza />} />
+        <Route path="/DiagnozaZalecenia" element={<DiagnozaZalecenia />} />
       </Routes>
 
     <footer>
