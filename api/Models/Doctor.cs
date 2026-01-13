@@ -12,5 +12,8 @@ namespace api.Models
         public string LastName { get; set; } = string.Empty;
         public string Specialty { get; set; } = string.Empty;
         
+
+        public string AccountId { get; set; }
+        public AppUser Account { get; set; }
     }
 }

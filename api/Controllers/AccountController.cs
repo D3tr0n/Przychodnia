@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using api.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using api.Data;
 
 
 namespace api.Controllers
@@ -20,11 +21,14 @@ namespace api.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly ITokenService _tokenService;
         private readonly SignInManager<AppUser> _signInManager;
-        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager)
+
+        private readonly ApplicationDBContext _context;
+        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager, ApplicationDBContext context)
         {
             _userManager = userManager;
             _tokenService = tokenService;
             _signInManager = signInManager;
+            _context = context;
         }
 
         [HttpPost("login")]
@@ -82,6 +86,12 @@ namespace api.Controllers
                     var roleResult = await _userManager.AddToRoleAsync(appUser, "Patient");
                     if(roleResult.Succeeded)
                     {
+                        _context.Patients.Add(new Patient {
+                            AccountId = appUser.Id
+                        });
+
+                        await _context.SaveChangesAsync();
+
                         return Ok(
                             new NewUserDto
                             {

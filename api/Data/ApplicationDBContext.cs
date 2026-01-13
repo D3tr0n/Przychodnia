@@ -49,6 +49,16 @@ namespace api.Data
                 }
             };
             builder.Entity<IdentityRole>().HasData(roles);
+
+            builder.Entity<Patient>()
+                .HasOne(p => p.Account)
+                .WithOne()
+                .HasForeignKey<Patient>(p => p.AccountId);
+
+            builder.Entity<Doctor>()
+                .HasOne(d => d.Account)
+                .WithOne()
+                .HasForeignKey<Doctor>(d => d.AccountId);
         }
     }
 }
