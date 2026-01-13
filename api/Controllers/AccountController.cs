@@ -87,7 +87,11 @@ namespace api.Controllers
                     if(roleResult.Succeeded)
                     {
                         _context.Patients.Add(new Patient {
-                            AccountId = appUser.Id
+                            AccountId = appUser.Id,
+                            FirstName = registerDto.FirstName,
+                            LastName = registerDto.LastName,
+                            Pesel = registerDto.Pesel,
+                            PhoneNumber = registerDto.PhoneNumber
                         });
 
                         await _context.SaveChangesAsync();

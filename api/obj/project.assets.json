@@ -4340,11 +4340,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kacpe\\Desktop\\Przychodnia\\api\\api.csproj",
+      "projectUniqueName": "C:\\Users\\kacpe\\Desktop\\PROJEKT-BAZY-DANYCH\\Przychodnia\\api\\api.csproj",
       "projectName": "api",
-      "projectPath": "C:\\Users\\kacpe\\Desktop\\Przychodnia\\api\\api.csproj",
+      "projectPath": "C:\\Users\\kacpe\\Desktop\\PROJEKT-BAZY-DANYCH\\Przychodnia\\api\\api.csproj",
       "packagesPath": "C:\\Users\\kacpe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kacpe\\Desktop\\Przychodnia\\api\\obj\\",
+      "outputPath": "C:\\Users\\kacpe\\Desktop\\PROJEKT-BAZY-DANYCH\\Przychodnia\\api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4860,7 +4860,7 @@
       "code": "NU1510",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Element PackageReference Microsoft.Extensions.Identity.Core nie zostanie oczyszczony. Rozważ usunięcie tego pakietu z zależności, ponieważ prawdopodobnie nie jest on potrzebny.",
+      "message": "PackageReference Microsoft.Extensions.Identity.Core will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.",
       "libraryId": "Microsoft.Extensions.Identity.Core",
       "targetGraphs": [
         "net10.0"

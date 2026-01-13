@@ -13,6 +13,10 @@ namespace api.Models
         public string LastName { get; set; } = string.Empty;
         public DateTime DateOfBirth { get; set; }
 
+        public string Pesel { get; set; } = string.Empty;
+
+        public string PhoneNumber { get; set; } = string.Empty;
+
         public List<PatientNotes> Notes { get; set; } = new List<PatientNotes>();
 
         public string AccountId { get; set; }
