@@ -12,6 +12,7 @@ import PanelUzytkownika from './pages/PanelUzytkownika'
 import Rezerwacja from './pages/Rezerwacja'
 import PanelLekarza from './pages/PanelLekarza'
 import DiagnozaZalecenia from './pages/DiagnozaZalecenia'
+import Kartoteka from './pages/Kartoteka'
 
 
 function App() {
@@ -51,6 +52,8 @@ function App() {
               <Link to="/wizyta">Wizyta</Link>
               <Link to="/PanelUzytkownika">Panel Użytkownika</Link>
               <Link to="/PanelLekarza">Panel Lekarza</Link>
+              <Link to="/Kartoteka">Kartoteka</Link>
+
 
             </>
           )}
@@ -102,6 +105,7 @@ function App() {
         <Route path="/Rezerwacja" element={<Rezerwacja />} />
         <Route path="/PanelLekarza" element={<PanelLekarza />} />
         <Route path="/DiagnozaZalecenia" element={<DiagnozaZalecenia />} />
+        <Route path="/Kartoteka" element={<Kartoteka />} />
       </Routes>
 
     <footer>
