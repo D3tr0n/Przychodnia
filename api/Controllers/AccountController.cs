@@ -14,7 +14,7 @@ using api.Data;
 
 namespace api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/account")]
     [ApiController]
     public class AccountController : ControllerBase
     {

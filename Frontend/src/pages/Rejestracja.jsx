@@ -49,16 +49,38 @@ export default function Rejestracja() {
 
     if (!validate()) return;
 
-    const res = await fetch("http://localhost:5021/api/auth/register", {
+      try {
+    const res = await fetch("http://localhost:5246/api/account/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password, firstName, lastName, phoneNumber, pesel })
+      body: JSON.stringify({
+        username,  
+        email: username,
+        password,
+        firstName,
+        lastName,
+        pesel,
+        phoneNumber
+      })
     });
 
-    const data = await res.json();
+    if (!res.ok) {
+      const errData = await res.json();
+      alert("Błąd: " + (errData.message || JSON.stringify(errData)));
+      return;
+    }
 
-    alert(data.message);
-  };
+    const data = await res.json();
+    alert("Konto utworzone! Token: " + data.token);
+
+
+    localStorage.setItem("token", data.token);
+
+  } catch (err) {
+    console.error(err);
+    alert("Błąd połączenia z API!");
+  }
+};
 
   return (
     <div>

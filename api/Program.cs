@@ -42,6 +42,16 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:5173") // adres Twojego frontendu
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddScoped<ITokenService, TokenService>();  
 
 var app = builder.Build();
@@ -54,7 +64,7 @@ if (app.Environment.IsDevelopment())
 }
 
 
-
+app.UseCors();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
