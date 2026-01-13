@@ -64,6 +64,8 @@ h1{
 
 .uslugi-element h2{
     color: #1d579e;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #statystyki{
@@ -81,6 +83,7 @@ h1{
 #statystyki h2{
     padding-top: 15px;
     font-size: 40px;
+    color: white;
 }
 
 #statystyki h4{
@@ -106,6 +109,8 @@ h1{
 
 .dzelement h2{
     color: #1c579f;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .dzelement h3{
