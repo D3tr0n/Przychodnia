@@ -58,3 +58,35 @@ button{
 #przyciski{
     text-align: right;
 }
+
+#panel{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding-top: 10px;
+}
+
+#lewoDane{
+    width: 20%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#kartoteka-form{
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+#peselznajdz{
+    width: 100%;
+    border-radius: 5px;
+    font-size: 19px;
+    color: white;
+    background-color: #008CBA; 
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
