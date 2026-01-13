@@ -60,3 +60,7 @@ footer{
     vertical-align: bottom;
     margin-top: 15%;
 }
+
+#error{
+    color: red;
+}

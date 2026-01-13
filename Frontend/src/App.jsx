@@ -13,6 +13,8 @@ import Rezerwacja from './pages/Rezerwacja'
 import PanelLekarza from './pages/PanelLekarza'
 import DiagnozaZalecenia from './pages/DiagnozaZalecenia'
 import Kartoteka from './pages/Kartoteka'
+import Rejestracja from './pages/Rejestracja'
+import GodzinyPracy from './pages/GodzinyPracy'
 
 
 function App() {
@@ -39,7 +41,7 @@ function App() {
               <Link to="/PanelUzytkownika">Moje Dane</Link>
               <Link to="/Rezerwacja">Rezerwacja</Link>
               <Link to="/DiagnozaZalecenia">Diagnoza i Zalecenia</Link>
-            
+              
               
 
             </>
@@ -53,7 +55,7 @@ function App() {
               <Link to="/PanelUzytkownika">Panel Użytkownika</Link>
               <Link to="/PanelLekarza">Panel Lekarza</Link>
               <Link to="/Kartoteka">Kartoteka</Link>
-
+              <Link to="/GodzinyPracy">Godziny Pracy</Link>
 
             </>
           )}
@@ -63,6 +65,7 @@ function App() {
 
           {isPanel ? <Link to="/glowna">Wyloguj się</Link> : 
           <Link to="/login">Zaloguj się</Link>}
+          <Link to="/Rejestracja">Rejestracja</Link>
 
 
         </div>
@@ -106,6 +109,9 @@ function App() {
         <Route path="/PanelLekarza" element={<PanelLekarza />} />
         <Route path="/DiagnozaZalecenia" element={<DiagnozaZalecenia />} />
         <Route path="/Kartoteka" element={<Kartoteka />} />
+        <Route path="/Rejestracja" element={<Rejestracja />} />
+        <Route path="/GodzinyPracy" element={<GodzinyPracy />} />
+        
       </Routes>
 
     <footer>
