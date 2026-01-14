@@ -23,14 +23,15 @@ namespace api.Service
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JWT:SigningKey"]));
         }
 
-        public string CreateToken(AppUser user, IList<string> roles)
+        public string CreateToken(AppUser user, IList<string> roles, string pesel)
         {
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.GivenName, user.UserName),
                 new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
+                new Claim(ClaimTypes.NameIdentifier, pesel ?? ""),
+                new Claim("UserId", user.Id)
                 
             };
 
