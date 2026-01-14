@@ -15,6 +15,7 @@ import DiagnozaZalecenia from './pages/DiagnozaZalecenia'
 import Kartoteka from './pages/Kartoteka'
 import Rejestracja from './pages/Rejestracja'
 import GodzinyPracy from './pages/GodzinyPracy'
+import ListaWizyt from './pages/ListaWizyt'
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
               <Link to="/PanelLekarza">Panel Lekarza</Link>
               <Link to="/Kartoteka">Kartoteka</Link>
               <Link to="/GodzinyPracy">Godziny Pracy</Link>
+              <Link to="/ListaWizyt">Lista Wizyt</Link>
 
             </>
           )}
@@ -111,6 +113,7 @@ function App() {
         <Route path="/Kartoteka" element={<Kartoteka />} />
         <Route path="/Rejestracja" element={<Rejestracja />} />
         <Route path="/GodzinyPracy" element={<GodzinyPracy />} />
+        <Route path="/ListaWizyt" element={<ListaWizyt />} />
         
       </Routes>
 
