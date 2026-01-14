@@ -12,7 +12,6 @@ using Microsoft.EntityFrameworkCore;
 using api.Data;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
 using api.Mappers;
 
 

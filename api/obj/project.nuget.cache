@@ -74,7 +74,7 @@
     {
       "code": "NU1510",
       "level": "Warning",
-      "message": "PackageReference Microsoft.Extensions.Identity.Core will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.",
+      "message": "Element PackageReference Microsoft.Extensions.Identity.Core nie zostanie oczyszczony. Rozważ usunięcie tego pakietu z zależności, ponieważ prawdopodobnie nie jest on potrzebny.",
       "projectPath": "C:\\Users\\kacpe\\Desktop\\PROJEKT-BAZY-DANYCH\\Przychodnia\\api\\api.csproj",
       "warningLevel": 1,
       "filePath": "C:\\Users\\kacpe\\Desktop\\PROJEKT-BAZY-DANYCH\\Przychodnia\\api\\api.csproj",

@@ -18,7 +18,11 @@ namespace api.Data
 
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<DoctorAvailability> Availabilities { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
         public DbSet<PatientNotes> PatientNotes { get; set; }
+        public DbSet<Kartoteka> Kartoteki { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

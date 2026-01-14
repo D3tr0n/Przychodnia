@@ -6,7 +6,6 @@ namespace api.Mappers
 {
     public static class DoctorMappers
     {
-        // Z DTO rejestracji -> do Bazy (używane w AccountController)
         public static Doctor ToDoctorFromRegisterDto(this RegisterDoctorDto doctorDto, string accountId)
         {
             return new Doctor
@@ -18,7 +17,6 @@ namespace api.Mappers
             };
         }
 
-        // Z Bazy -> do DTO (używane np. w GetProfile lub liście lekarzy)
         public static DoctorDto ToDoctorDto(this Doctor doctorModel)
         {
             return new DoctorDto
