@@ -16,6 +16,7 @@ import Kartoteka from './pages/Kartoteka'
 import Rejestracja from './pages/Rejestracja'
 import GodzinyPracy from './pages/GodzinyPracy'
 import ListaWizyt from './pages/ListaWizyt'
+import RejestracjaLekarza from './pages/RejestracjaLekarza'
 
 
 function App() {
@@ -114,6 +115,7 @@ function App() {
         <Route path="/Rejestracja" element={<Rejestracja />} />
         <Route path="/GodzinyPracy" element={<GodzinyPracy />} />
         <Route path="/ListaWizyt" element={<ListaWizyt />} />
+        <Route path="/rejestracjalekarza" element={<RejestracjaLekarza />} />
         
       </Routes>
 
