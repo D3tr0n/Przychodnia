@@ -18,8 +18,13 @@ namespace api.Data
 
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<DoctorAvailability> Availabilities { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
         public DbSet<PatientNotes> PatientNotes { get; set; }
+<<<<<<< HEAD
+=======
         
+>>>>>>> 7caf46827d261093777c6c78c479d18b34729429
         public DbSet<Kartoteka> Kartoteki { get; set; }
 
 

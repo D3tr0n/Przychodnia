@@ -1,66 +1,87 @@
-
-#panellogowanie{
-    background-color: #f0f8ff;
-    justify-self: center;
+/* Kontener ustawiający wszystko na środku strony */
+.login-wrapper {
     display: flex;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    width: 75%;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Odstęp od góry i dołu */
+}
+
+#panellogowanie {
+    background-color: #f0f8ff;
+    width: 400px;           /* Stała, wąska szerokość */
+    padding: 40px;
     border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#lewo{
-    width: 50%;
-}
-
-#lewo img{
-    border-bottom-left-radius: 15px;
-    border-top-left-radius: 15px;
-}
-
-#prawo{
-    width: 50%;
-    justify-content: center;
-}
-
-#prawo h2{
+#panellogowanie h2 {
+    color: #003366;
+    font-family: 'Segoe UI', sans-serif;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
     text-align: center;
 }
 
-#prawo h4{
-    margin-bottom: 4px;
-    text-align: left;
-    padding-left: 40px;
-    
+#formularz {
+    width: 100%;
 }
 
-#prawo input{
-    height: 30px;
-    width: 90%;
+.input-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#formularz h4 {
+    margin-bottom: 6px;
+    color: #4b5563;
+    font-weight: 600;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+#formularz input {
+    height: 40px;
+    width: 100%;
     border-radius: 10px;
-    border: solid 1px gray;
+    border: 1px solid #d1d5db;
+    padding: 0 15px;
+    box-sizing: border-box; /* Kluczowe: padding nie rozszerza inputa */
+    font-size: 1rem;
 }
 
-#formularz{
-    justify-content: center;
-    text-align: center;
-}
-
-#formularz button{
-    margin-top: 40px;
+#formularz button {
+    margin-top: 10px;
     background-color: #3B82F6;
-    border: #3B82F6 1px;
+    border: none;
     border-radius: 10px;
-    height: 30px;
-    width: 200px;
+    height: 48px;
+    width: 100%;
     color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
-footer{
-    vertical-align: bottom;
-    margin-top: 15%;
+#formularz button:hover {
+    background-color: #2563eb;
 }
 
-#error{
-    color: red;
+.lekarz-link {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #4b5563;
+    text-align: center;
+}
+
+.lekarz-link a {
+    color: #3B82F6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.lekarz-link a:hover {
+    text-decoration: underline;
 }

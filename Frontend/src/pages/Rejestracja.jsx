@@ -88,7 +88,6 @@ export default function Rejestracja() {
     <div id="panellogowanie">
 
       <div id="srodek">
-        <h2>Rejestracja</h2>
         <form id="formularz" onSubmit={handleRegister}>
           
           <div className="input-group">

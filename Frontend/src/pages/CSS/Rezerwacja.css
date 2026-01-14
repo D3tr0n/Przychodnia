@@ -1,55 +1,80 @@
-.rezerwacja {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  background-color: #fefefe;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+.rezerwacja-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
 }
 
-.rezerwacja h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+.form-grid {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 30px;
 }
 
-.rezerwacja ul {
-  list-style: none;
-  padding: 0;
+#panelrejestracja select {
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    padding: 0 10px;
+    width: 100%;
 }
 
-.rezerwacja li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+.doctors-list {
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: left;
 }
 
-.rezerwacja li.available {
-  background-color: #e6f7ff;
-  border-left: 5px solid #007bff;
+.doctor-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-.rezerwacja li.taken {
-  background-color: #f8d7da;
-  border-left: 5px solid #dc3545;
-  color: #721c24;
+.doctor-card:hover {
+    border-color: #3B82F6;
 }
 
-.rezerwacja button {
-  padding: 5px 12px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.2s;
+.doctor-card.active {
+    border-color: #3B82F6;
+    background-color: #eff6ff;
+    box-shadow: 0 0 0 2px #3B82F6;
 }
 
-.rezerwacja button:hover {
-  background-color: #0056b3;
+.slots-container {
+    width: 100%;
+    text-align: left;
+}
+
+.slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.slot-btn {
+    background: white;
+    border: 1px solid #3B82F6;
+    color: #3B82F6;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.slot-btn:hover {
+    background: #3B82F6;
+    color: white;
+}
+
+.error-text {
+    color: #dc2626;
+    font-size: 0.9rem;
+    margin-top: 10px;
 }

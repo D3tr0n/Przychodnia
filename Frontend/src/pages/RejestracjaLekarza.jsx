@@ -66,7 +66,6 @@ export default function RejestracjaLekarza() {
         <div className="registration-container">
             <div id="panellogowanie">
                 <div id="srodek">
-                    <h2>Rejestracja Lekarza</h2>
                     <form id="formularz" onSubmit={handleRegister}>
                         
                         <div className="input-group">

@@ -72,6 +72,15 @@
   ],
   "logs": [
     {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problem reading the cache file C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia — kopia\\Przychodnia\\api\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia — kopia\\Przychodnia\\api\\api.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia — kopia\\Przychodnia\\api\\api.csproj",
+      "targetGraphs": []
+    },
+    {
       "code": "NU1510",
       "level": "Warning",
       "message": "PackageReference Microsoft.Extensions.Identity.Core will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.",
