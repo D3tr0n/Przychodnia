@@ -10,6 +10,10 @@ using Microsoft.AspNetCore.Mvc;
 using api.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using api.Data;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using api.Mappers;
 
 
 namespace api.Controllers
@@ -53,12 +57,15 @@ namespace api.Controllers
                 return Unauthorized("Nazwa użytkownika lub hasło są niepoprawne!");
             }
 
+            var roles = await _userManager.GetRolesAsync(user);
+
             return Ok(
                 new NewUserDto
                 {
                     Username = user.UserName,
                     Email = user.Email,
-                    Token = _tokenService.CreateToken(user)
+                    Roles = roles,
+                    Token = _tokenService.CreateToken(user, roles)
                 }
             );
         }
@@ -95,13 +102,14 @@ namespace api.Controllers
                         });
 
                         await _context.SaveChangesAsync();
+                        var roles = await _userManager.GetRolesAsync(appUser);
 
                         return Ok(
                             new NewUserDto
                             {
                                 Username = appUser.UserName,
                                 Email = appUser.Email,
-                                Token = _tokenService.CreateToken(appUser)
+                                Token = _tokenService.CreateToken(appUser, roles)
                             }
                         );
                     }
@@ -120,5 +128,91 @@ namespace api.Controllers
                 return StatusCode(500, new { message = e.Message });
             }
         }
+
+        [HttpGet("profile")]
+        [Authorize]
+        public async Task<IActionResult> GetProfile()
+        {
+            // Pobiera ID użytkownika z tokena
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); 
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("Brak ID użytkownika w tokenie.");
+            }
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) return NotFound("Użytkownik nie istnieje.");
+
+            var patient = await _context.Patients.FirstOrDefaultAsync(p => p.AccountId == user.Id);
+            
+            if (patient == null) return NotFound("Dane pacjenta nie istnieją.");
+
+            return Ok(new {
+                firstName = patient.FirstName,
+                lastName = patient.LastName,
+                email = user.Email,
+                phoneNumber = patient.PhoneNumber,
+                pesel = patient.Pesel
+            });
+}
+
+        [HttpPost("register/doctor")]
+        public async Task<IActionResult> RegisterDoctor([FromBody] RegisterDoctorDto registerDto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var appUser = new AppUser
+            {
+                UserName = registerDto.Username,
+                Email = registerDto.Email
+            };
+
+            var createdUser = await _userManager.CreateAsync(appUser, registerDto.Password!);
+
+            if (createdUser.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(appUser, "Doctor");
+
+                var doctorModel = registerDto.ToDoctorFromRegisterDto(appUser.Id);
+
+                await _context.Doctors.AddAsync(doctorModel);
+                await _context.SaveChangesAsync();
+
+                return Ok(new {
+                    UserName = appUser.UserName,
+                    Token = _tokenService.CreateToken(appUser, new List<string> { "Doctor" })
+                });
+            }
+
+            return BadRequest(createdUser.Errors);
+        }
+
+        [HttpGet("doctor-profile")]
+        [Authorize(Roles = "Doctor")]
+        public async Task<IActionResult> GetDoctorProfile()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var doctor = await _context.Doctors
+                .Include(d => d.Account) 
+                .FirstOrDefaultAsync(d => d.AccountId == userId);
+
+            if (doctor == null)
+            {
+                return NotFound("Nie znaleziono danych lekarza w bazie.");
+            }
+
+            var doctorDto = new 
+            {
+                FirstName = doctor.FirstName,
+                LastName = doctor.LastName,
+                Specialization = doctor.Specialization,
+                Email = doctor.Account?.Email
+            };
+
+            return Ok(doctorDto);
+        }
+
     }
 }

@@ -1,92 +1,66 @@
 import './CSS/PanelLekarza.css'
+import { useState, useEffect } from 'react'
 
 export default function PanelLekarza() {
-return (
-    <div id="dane">
+    const [doctorData, setDoctorData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
+    useEffect(() => {
+        const fetchDoctorData = async () => {
+            try {
+                const token = localStorage.getItem("token");
+                const res = await fetch("http://localhost:5246/api/account/doctor-profile", {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                        "Content-Type": "application/json"
+                    }
+                });
 
+                if (res.ok) {
+                    const data = await res.json();
+                    setDoctorData(data);
+                } else {
+                    console.error("Błąd pobierania danych");
+                }
+            } catch (err) {
+                console.error("Błąd połączenia:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    <div id="lewo">
+        fetchDoctorData();
+    }, []);
 
+    if (loading) return <div className="loading">Ładowanie danych...</div>;
+    if (!doctorData) return <div className="error">Nie udało się załadować profilu.</div>;
 
-    <div id="imie">
+    return (
+        <div id="dane">
+            <div id="lewo">
+                <div className="info-box">
+                    <h2>Imię</h2>
+                    <h3>{doctorData.firstName}</h3>
+                </div>
 
-        <h2>Imię</h2>
-        <h3>Kacper</h3>
+                <div className="info-box">
+                    <h2>Nazwisko</h2>
+                    <h3>{doctorData.lastName}</h3>
+                </div>
+            </div>
 
+            <div id="prawo">
+                <div className="info-box">
+                    <h2>E-mail (Login)</h2>
+                    <h3>{doctorData.email}</h3>
+                </div>
 
-    </div>
-
-    <div id="nazwisko">
-
-        <h2>Nazwisko</h2>
-        <h3>Kowalski</h3>
-
-    </div>
-
-    <div id="email">
-
-        <h2>E-mail</h2>
-        <h3>xdddd@xd.xd</h3>
-
-    </div>
-
-    <div id="data-urodzenia">
-
-        <h2>Data urodzenia</h2>
-        <h3>07.07.1997</h3>
-
-    </div>
-
-    <div id="stanowisko">
-
-        <h2>Stanowisko</h2>
-        <h3>Lekarz</h3>
-
-    </div>
-
-    </div>
-
-    <div id="prawo">
-
-    <div id="telefon">
-
-        <h2>Nr. telefonu</h2>
-        <h3>123 456 789</h3>
-
-    </div>
-
-    <div id="adres">
-
-        <h2>Adres</h2>
-        <h3>ul. Grzybowska 63</h3>
-
-    </div>
-
-    <div id="miasto">
-
-        <h2>Miasto</h2>
-        <h3>Warszawa</h3>
-
-    </div>
-
-    <div id="kod-pocztowy">
-
-        <h2>Kod pocztowy</h2>
-        <h3>00-001</h3>
-
-    </div>
-
-    <div id="kraj">
-
-        <h2>Kraj</h2>
-        <h3>Polska</h3>
-
-    </div>
-
-    </div>
-
-
-    </div>
-)
+                <div className="info-box">
+                    <h2>Specjalizacja</h2>
+                    <h3>{doctorData.specialization}</h3>
+                </div>
+            </div>
+        </div>
+    )
 }

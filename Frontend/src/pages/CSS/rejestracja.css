@@ -1,0 +1,46 @@
+#panellogowanie {
+    background-color: #f0f8ff;
+    display: flex;
+    width: auto;           /* Zmienione z 900px */
+    min-width: 450px;      /* Minimalna szerokość, żeby nie był za chudy */
+    max-width: 90%;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 100px auto;    /* Centrowanie na środku strony */
+}
+
+#srodek {
+    flex: 1;               /* Zajmuje dostępną przestrzeń */
+    padding: 40px 60px;    /* Większe marginesy boczne wewnątrz */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Link pod przyciskiem */
+.lekarz-link {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.lekarz-link a {
+    color: #3B82F6;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.lekarz-link a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+/* Dostosowanie rzędów, aby nie rozciągały panelu w nieskończoność */
+.input-row {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    min-width: 400px; /* To kontroluje ostateczną szerokość formularza */
+}
