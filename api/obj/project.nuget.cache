@@ -72,6 +72,15 @@
   ],
   "logs": [
     {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Wystąpił problem podczas czytania pliku pamięci podręcznej C:\\Users\\kacpe\\Desktop\\PROJEKT-BAZY-DANYCH\\Przychodnia\\api\\obj\\project.nuget.cache: '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 77 | BytePositionInLine: 0.",
+      "projectPath": "C:\\Users\\kacpe\\Desktop\\PROJEKT-BAZY-DANYCH\\Przychodnia\\api\\api.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\kacpe\\Desktop\\PROJEKT-BAZY-DANYCH\\Przychodnia\\api\\api.csproj",
+      "targetGraphs": []
+    },
+    {
       "code": "NU1510",
       "level": "Warning",
       "message": "Element PackageReference Microsoft.Extensions.Identity.Core nie zostanie oczyszczony. Rozważ usunięcie tego pakietu z zależności, ponieważ prawdopodobnie nie jest on potrzebny.",

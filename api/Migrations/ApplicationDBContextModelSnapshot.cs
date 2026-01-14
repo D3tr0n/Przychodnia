@@ -22,6 +22,7 @@ namespace api.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+<<<<<<< HEAD
             modelBuilder.Entity("DoctorAvailability", b =>
                 {
                     b.Property<int>("Id")
@@ -50,6 +51,8 @@ namespace api.Migrations
                     b.ToTable("Availabilities");
                 });
 
+=======
+>>>>>>> 7caf46827d261093777c6c78c479d18b34729429
             modelBuilder.Entity("Kartoteka", b =>
                 {
                     b.Property<int>("Id")
