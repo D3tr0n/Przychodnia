@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using api.Data;
 using api.Mappers;
+using api.Dtos.Patient;
 
 namespace api.Controllers
 {
@@ -17,6 +18,29 @@ namespace api.Controllers
         {
             _context = context;
         }
+
+        [HttpGet("by-pesel")]
+        public IActionResult GetByPesel([FromQuery] string pesel)
+        {
+            var patient = _context.Patients
+                .Where(p => p.Pesel == pesel)
+                .Select(p => new PatientDto
+                {
+                    FirstName = p.FirstName,
+                    LastName = p.LastName,
+                    Pesel = p.Pesel,
+                    PhoneNumber = p.PhoneNumber
+                })
+                .FirstOrDefault();
+
+            if (patient == null) return NotFound();
+            return Ok(patient);
+        }
+
+
+
+
+
 
         [HttpGet]
         public IActionResult GetAll()

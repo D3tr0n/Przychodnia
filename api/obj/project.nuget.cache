@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aoWizjlLgOI=",
+  "dgSpecHash": "Az12Rv2p7gg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\kacpe\\Desktop\\PROJEKT-BAZY-DANYCH\\Przychodnia\\api\\api.csproj",
+  "projectFilePath": "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia\\Przychodnia\\api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kacpe\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\kacpe\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
@@ -74,10 +74,10 @@
     {
       "code": "NU1510",
       "level": "Warning",
-      "message": "PackageReference Microsoft.Extensions.Identity.Core will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.",
-      "projectPath": "C:\\Users\\kacpe\\Desktop\\PROJEKT-BAZY-DANYCH\\Przychodnia\\api\\api.csproj",
+      "message": "Element PackageReference Microsoft.Extensions.Identity.Core nie zostanie oczyszczony. Rozważ usunięcie tego pakietu z zależności, ponieważ prawdopodobnie nie jest on potrzebny.",
+      "projectPath": "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia\\Przychodnia\\api\\api.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\kacpe\\Desktop\\PROJEKT-BAZY-DANYCH\\Przychodnia\\api\\api.csproj",
+      "filePath": "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia\\Przychodnia\\api\\api.csproj",
       "libraryId": "Microsoft.Extensions.Identity.Core",
       "targetGraphs": [
         "net10.0"
