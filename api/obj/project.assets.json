@@ -4339,11 +4339,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia\\Przychodnia\\api\\api.csproj",
+      "projectUniqueName": "E:\\Przychodnia2.0\\Przychodnia\\api\\api.csproj",
       "projectName": "api",
-      "projectPath": "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia\\Przychodnia\\api\\api.csproj",
+      "projectPath": "E:\\Przychodnia2.0\\Przychodnia\\api\\api.csproj",
       "packagesPath": "C:\\Users\\kacpe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia\\Przychodnia\\api\\obj\\",
+      "outputPath": "E:\\Przychodnia2.0\\Przychodnia\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kacpe\\AppData\\Roaming\\NuGet\\NuGet.Config"
