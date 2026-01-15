@@ -3,75 +3,96 @@ import './CSS/ListaWizyt.css';
 
 export default function ListaWizyt() {
     const [appointments, setAppointments] = useState([]);
+    // Pobieramy rolę z localStorage (zakładam, że tam ją trzymasz po loginie)
+    const userRole = localStorage.getItem('role'); 
 
     useEffect(() => {
-    fetch('/api/getMyAppointments')
+        fetch('http://localhost:5246/api/appointment/my-appointments', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
         .then(res => res.json())
         .then(data => setAppointments(data))
         .catch(err => console.error("Błąd pobierania wizyt:", err));
-}, []);
+    }, []);
 
     const updateStatus = (appointmentId, newStatus) => {
-    fetch(`/api/updateAppointmentStatus`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ appointmentId, status: newStatus })
-    })
-    .then(res => {
-    if (res.ok) {
-        setAppointments(appointments.map(a =>
-        a.id === appointmentId ? { ...a, status: newStatus } : a
-        ));
-    }
-    });
-};
+        fetch(`http://localhost:5246/api/appointment/update-status`, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({ appointmentId, status: newStatus })
+        })
+        .then(res => {
+            if (res.ok) {
+                setAppointments(appointments.map(a =>
+                    a.id === appointmentId ? { ...a, status: newStatus } : a
+                ));
+            }
+        });
+    };
 
+    // Grupowanie dat (poprawione sortowanie i formatowanie)
     const groupedByDate = appointments.reduce((acc, app) => {
-    if (!acc[app.date]) acc[app.date] = [];
-    acc[app.date].push(app);
-    return acc;
-}, {});
+        const dateKey = new Date(app.date).toLocaleDateString();
+        if (!acc[dateKey]) acc[dateKey] = [];
+        acc[dateKey].push(app);
+        return acc;
+    }, {});
 
-return (
-    <div className="lista-wizyt">
-    <h2>Twoje wizyty</h2>
+    return (
+        <div className="lista-wizyt-container">
+            <h2>Twoje wizyty ({userRole === 'Doctor' ? 'Panel Lekarza' : 'Panel Pacjenta'})</h2>
 
-    {appointments.length === 0 ? (
-        <p>Brak zaplanowanych wizyt.</p>
-    ) : (
-        Object.keys(groupedByDate).sort().map(date => (
-        <div key={date} className="day-group">
-            <h3>{date}</h3>
-            <table>
-            <thead>
-                <tr>
-                <th>Pacjent</th>
-                <th>Godzina</th>
-                <th>Status</th>
-                <th>Akcje</th>
-                </tr>
-            </thead>
-            <tbody>
-                {groupedByDate[date].sort((a, b) => a.start.localeCompare(b.start)).map(app => (
-                <tr key={app.id}>
-                    <td>{app.patientName || app.patientId}</td>
-                    <td>{app.start} - {app.end}</td>
-                    <td>{app.status}</td>
-                    <td>
-                        {app.status === 'Scheduled' && (
-                        <>
-                        <button onClick={() => updateStatus(app.id, 'Completed')}>Zakończ</button>
-                        <button onClick={() => updateStatus(app.id, 'Cancelled')}>Anuluj</button>
-                        </>
-                    )}
-                    </td>
-                </tr>
-                ))}
-            </tbody>
-            </table>
+            {appointments.length === 0 ? (
+                <p className="no-data">Brak zaplanowanych wizyt.</p>
+            ) : (
+                Object.keys(groupedByDate).sort().map(date => (
+                    <div key={date} className="day-group">
+                        <h3 className="date-header">{date}</h3>
+                        <table className="appointments-table">
+                            <thead>
+                                <tr>
+                                    <th>{userRole === 'Doctor' ? 'Pacjent' : 'Lekarz'}</th>
+                                    <th>Godzina</th>
+                                    <th>Status</th>
+                                    <th>Akcje</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {groupedByDate[date].sort((a, b) => a.time.localeCompare(b.time)).map(app => (
+                                    <tr key={app.id}>
+                                        <td>
+                                            {userRole === 'Doctor' 
+                                                ? `${app.patientFirstName} ${app.patientLastName}` 
+                                                : `dr ${app.doctorFirstName} ${app.doctorLastName}`}
+                                        </td>
+                                        <td>{app.time}</td>
+                                        <td>
+                                            <span className={`status-badge ${app.status.toLowerCase()}`}>
+                                                {app.status}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            {app.status === 'Zaplanowana' && (
+                                                <div className="action-btns">
+                                                    {userRole === 'Doctor' && (
+                                                        <button className="btn-done" onClick={() => updateStatus(app.id, 'Zakończona')}>Zakończ</button>
+                                                    )}
+                                                    <button className="btn-cancel" onClick={() => updateStatus(app.id, 'Odwołana')}>Anuluj</button>
+                                                </div>
+                                            )}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                ))
+            )}
         </div>
-        ))
-    )}
-    </div>
-);
+    );
 }

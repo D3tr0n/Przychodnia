@@ -60,13 +60,13 @@ namespace api.Controllers
         [HttpGet("doctors")]
         public async Task<IActionResult> GetDoctors([FromQuery] string spec)
         {
-            var doctors = await _context.Users
-                .Where(u => u.Role == "Doctor" && u.Specialization == spec)
-                .Select(u => new {
-                    u.Id,
-                    u.FirstName,
-                    u.LastName,
-                    u.Specialization
+            var doctors = await _context.Doctors
+                .Where(d => d.Specialization.ToLower() == spec.ToLower())
+                .Select(d => new {
+                    Id = d.AccountId, 
+                    d.FirstName,
+                    d.LastName,
+                    d.Specialization
                 })
                 .ToListAsync();
 
@@ -77,7 +77,7 @@ namespace api.Controllers
         public async Task<IActionResult> GetAvailableSlots(string doctorId, DateTime date)
         {
             var baseSchedule = await _context.Availabilities
-                .Where(a => a.DoctorId == doctorId)
+                .Where(a => a.DoctorId == doctorId) 
                 .ToListAsync();
 
             var bookedTimes = await _context.Appointments
@@ -93,7 +93,6 @@ namespace api.Controllers
 
             return Ok(freeSlots);
         }
-
 
         [HttpPost("book-appointment")]
         [Authorize]
