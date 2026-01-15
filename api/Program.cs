@@ -11,18 +11,28 @@ using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+// Zapobiega mapowaniu nazw claimów na formaty XML (zostawia "nameid", "role" itp.)
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
+// --- SERWISY ---
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Jedna, solidna polityka CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
 builder.Services.AddDbContext<ApplicationDBContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 {
@@ -32,7 +42,6 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
     options.Password.RequireNonAlphanumeric = true;
 }).AddEntityFrameworkStores<ApplicationDBContext>();
 
-
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -40,9 +49,7 @@ builder.Services.AddAuthentication(options =>
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(options =>
 {
-
     options.IncludeErrorDetails = true; 
-    
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -51,28 +58,21 @@ builder.Services.AddAuthentication(options =>
         ValidAudience = builder.Configuration["JWT:Audience"],
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(builder.Configuration["JWT:SigningKey"] ?? throw new InvalidOperationException("Brak klucza JWT w appsettings.json"))
+            Encoding.UTF8.GetBytes(builder.Configuration["JWT:SigningKey"] ?? throw new InvalidOperationException("Brak klucza JWT"))
         ),
         ValidateLifetime = true,
         ClockSkew = TimeSpan.Zero 
     };
 });
 
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowFrontend",
-        policy => policy
-            .WithOrigins("http://localhost:5173") 
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials()
-    );
-});
-
-builder.Services.AddScoped<ITokenService, TokenService>();  
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
+
+// --- MIDDLEWARE (KOLEJNOŚĆ MA ZNACZENIE) ---
+
+// 1. CORS musi być pierwszy
+app.UseCors("AllowAll");
 
 if (app.Environment.IsDevelopment())
 {
@@ -80,12 +80,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
-app.UseCors("AllowFrontend");
-
-
+// 2. Jeśli używasz HTTPS w API a HTTP w React, to może blokować. 
+// Jeśli masz błędy, możesz tymczasowo zakomentować app.UseHttpsRedirection();
 app.UseHttpsRedirection(); 
 
+// 3. Autentykacja przed Autoryzacją
 app.UseAuthentication();
 app.UseAuthorization();
 

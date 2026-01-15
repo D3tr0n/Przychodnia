@@ -1,19 +1,37 @@
 import React, { useState, useEffect } from 'react';
+import { jwtDecode } from 'jwt-decode';
 import './CSS/ListaWizyt.css';
 
 export default function ListaWizyt() {
     const [appointments, setAppointments] = useState([]);
-    // Pobieramy rolę z localStorage (zakładam, że tam ją trzymasz po loginie)
-    const userRole = localStorage.getItem('role'); 
+    const [userRole, setUserRole] = useState(null);
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
+        
+        if (token) {
+            try {
+                const decoded = jwtDecode(token);
+                const role = decoded.role || decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+                setUserRole(role);
+                console.log("Zalogowany jako:", role);
+            } catch (error) {
+                console.error("Błąd dekodowania tokena:", error);
+            }
+        }
+
         fetch('http://localhost:5246/api/appointment/my-appointments', {
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${token}`
             }
         })
-        .then(res => res.json())
-        .then(data => setAppointments(data))
+        .then(res => {
+            if (!res.ok) throw new Error(`Błąd: ${res.status}`);
+            return res.json();
+        })
+        .then(data => {
+            setAppointments(data);
+        })
         .catch(err => console.error("Błąd pobierania wizyt:", err));
     }, []);
 
@@ -35,7 +53,6 @@ export default function ListaWizyt() {
         });
     };
 
-    // Grupowanie dat (poprawione sortowanie i formatowanie)
     const groupedByDate = appointments.reduce((acc, app) => {
         const dateKey = new Date(app.date).toLocaleDateString();
         if (!acc[dateKey]) acc[dateKey] = [];
@@ -56,8 +73,15 @@ export default function ListaWizyt() {
                         <table className="appointments-table">
                             <thead>
                                 <tr>
-                                    <th>{userRole === 'Doctor' ? 'Pacjent' : 'Lekarz'}</th>
                                     <th>Godzina</th>
+                                    {userRole === 'Doctor' ? (
+                                        <th>Pacjent</th>
+                                    ) : (
+                                        <>
+                                            <th>Lekarz</th>
+                                            <th>Specjalizacja</th>
+                                        </>
+                                    )}
                                     <th>Status</th>
                                     <th>Akcje</th>
                                 </tr>
@@ -65,12 +89,17 @@ export default function ListaWizyt() {
                             <tbody>
                                 {groupedByDate[date].sort((a, b) => a.time.localeCompare(b.time)).map(app => (
                                     <tr key={app.id}>
-                                        <td>
-                                            {userRole === 'Doctor' 
-                                                ? `${app.patientFirstName} ${app.patientLastName}` 
-                                                : `dr ${app.doctorFirstName} ${app.doctorLastName}`}
-                                        </td>
                                         <td>{app.time}</td>
+                                        
+                                        {userRole === 'Doctor' ? (
+                                            <td>{app.patientFirstName} {app.patientLastName}</td>
+                                        ) : (
+                                            <>
+                                                <td>dr {app.doctorFirstName} {app.doctorLastName}</td>
+                                                <td>{app.doctorSpecialization}</td>
+                                            </>
+                                        )}
+
                                         <td>
                                             <span className={`status-badge ${app.status.toLowerCase()}`}>
                                                 {app.status}

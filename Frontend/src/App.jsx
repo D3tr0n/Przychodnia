@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import logo from './assets/prohealth.png'
 import './App.css'
 import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom'
-import { jwtDecode } from 'jwt-decode' // Pamiętaj o imporcie dekodera
+import { jwtDecode } from 'jwt-decode'
 
 import Glowna from './pages/Glowna'
 import Onas from './pages/Onas'
@@ -29,18 +29,16 @@ function App() {
         setToken(localStorage.getItem("token"))
     }, [location])
 
-    // Pobieranie roli z tokena
     let userRole = null;
     if (token) {
         try {
             const decoded = jwtDecode(token);
-            userRole = decoded.role; // Zakładamy, że pole w tokenie nazywa się 'role'
+            userRole = decoded.role;
         } catch (error) {
             console.error("Błąd dekodowania tokena:", error);
         }
     }
 
-    // Funkcja wylogowania
     const handleLogout = () => {
         localStorage.removeItem("token")
         setToken(null)
@@ -75,7 +73,7 @@ function App() {
                                 <>
                                     <Link to="/PanelUzytkownika">Moje Dane</Link>
                                     <Link to="/Rezerwacja">Rezerwacja</Link>
-                                    <Link to="/DiagnozaZalecenia">Moje Wizyty</Link>
+                                    <Link to="/ListaWizyt">Moje Wizyty</Link>
                                 </>
                             )}
                         </>
