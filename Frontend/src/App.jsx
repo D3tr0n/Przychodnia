@@ -50,7 +50,8 @@ function App() {
                     location.pathname.startsWith('/DiagnozaZalecenia') ||
                     location.pathname.startsWith('/PanelLekarza') ||
                     location.pathname.startsWith('/ListaWizyt') ||
-                    location.pathname.startsWith('/GodzinyPracy')
+                    location.pathname.startsWith('/GodzinyPracy') ||
+                    location.pathname.startsWith('/Kartoteka');
 
     return (
         <>
@@ -68,12 +69,14 @@ function App() {
                                     <Link to="/PanelLekarza">Moje Dane</Link>
                                     <Link to="/ListaWizyt">Lista Wizyt</Link>
                                     <Link to="/GodzinyPracy">Godziny Pracy</Link>
+                                    <Link to="/Kartoteka">Kartoteka Pacjentów</Link>
                                 </>
                             ) : (
                                 <>
                                     <Link to="/PanelUzytkownika">Moje Dane</Link>
                                     <Link to="/Rezerwacja">Rezerwacja</Link>
                                     <Link to="/ListaWizyt">Moje Wizyty</Link>
+                                    <Link to="/DiagnozaZalecenia">Diagnoza i Zalecenia</Link>
                                 </>
                             )}
                         </>

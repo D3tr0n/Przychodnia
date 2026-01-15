@@ -23,36 +23,37 @@ namespace api.Service
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JWT:SigningKey"]));
         }
 
-        public string CreateToken(AppUser user, IList<string> roles)
-        {
-            var claims = new List<Claim>
-            {
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim(JwtRegisteredClaimNames.GivenName, user.UserName),
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
-                
-            };
+        public string CreateToken(AppUser user, IList<string> roles, string pesel)
+{
+    var claims = new List<Claim>
+    {
+        new Claim(JwtRegisteredClaimNames.Email, user.Email),
+        new Claim(JwtRegisteredClaimNames.GivenName, user.UserName),
+        // Kluczowe poprawki:
+        new Claim(ClaimTypes.Name, user.UserName),
+        new Claim(ClaimTypes.NameIdentifier, user.Id), // Tu MUSI być ID użytkownika
+        new Claim("PESEL", pesel ?? ""), // PESEL dajemy jako osobny, własny Claim
+        new Claim("UserId", user.Id) // Zostawiamy dla kompatybilności z Twoim Reactem
+    };
 
-            claims.AddRange(roles.Select(r => new Claim(ClaimTypes.Role, r)));
+    // Poprawne dodawanie ról
+    claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
-            
+    var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
 
-            var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+    var tokenDescriptor = new SecurityTokenDescriptor
+    {
+        Subject = new ClaimsIdentity(claims),
+        Expires = DateTime.Now.AddDays(7),
+        SigningCredentials = creds,
+        Issuer = _config["JWT:Issuer"],
+        Audience = _config["JWT:Audience"]
+    };
 
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(7),
-                SigningCredentials = creds,
-                Issuer = _config["JWT:Issuer"],
-                Audience = _config["JWT:Audience"]
-            };
+    var tokenHandler = new JwtSecurityTokenHandler();
+    var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-
-            return tokenHandler.WriteToken(token);  
-        }
+    return tokenHandler.WriteToken(token);
+}
     }
 }

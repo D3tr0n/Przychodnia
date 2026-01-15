@@ -11,15 +11,12 @@ using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Zapobiega mapowaniu nazw claimów na formaty XML (zostawia "nameid", "role" itp.)
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-// --- SERWISY ---
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Jedna, solidna polityka CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -69,9 +66,7 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
 
-// --- MIDDLEWARE (KOLEJNOŚĆ MA ZNACZENIE) ---
 
-// 1. CORS musi być pierwszy
 app.UseCors("AllowAll");
 
 if (app.Environment.IsDevelopment())
@@ -80,11 +75,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// 2. Jeśli używasz HTTPS w API a HTTP w React, to może blokować. 
-// Jeśli masz błędy, możesz tymczasowo zakomentować app.UseHttpsRedirection();
+
 app.UseHttpsRedirection(); 
 
-// 3. Autentykacja przed Autoryzacją
 app.UseAuthentication();
 app.UseAuthorization();
 

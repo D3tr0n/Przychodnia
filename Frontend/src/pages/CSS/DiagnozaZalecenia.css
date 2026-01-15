@@ -1,23 +1,63 @@
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: Arial, sans-serif;
-    table-layout: fixed;
+.diagnoza-container {
+    padding: 20px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-th {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px;
+.diagnoza-title {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.diagnoza-loading,
+.diagnoza-empty {
+    font-size: 16px;
+    color: #555;
+}
+
+.diagnoza-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.diagnoza-table thead tr {
+    background-color: #3498db;
+    color: #ffffff;
     text-align: left;
 }
 
-td {
+.diagnoza-table th {
     padding: 12px;
-    border-bottom: 1px solid #ddd;
-    word-wrap: break-word;
+    border: 1px solid #ddd;
+    font-weight: 600;
 }
 
-tr:hover {
-    background-color: #f1f1f1;
+.diagnoza-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    vertical-align: top;
+}
+
+.diagnoza-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.diagnoza-table tbody tr:hover {
+    background-color: #eef6fd;
+}
+
+.diagnoza-date {
+    white-space: nowrap;
+    color: #555;
+}
+
+.diagnoza-topic {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.diagnoza-description {
+    color: #333;
+    line-height: 1.5;
 }
