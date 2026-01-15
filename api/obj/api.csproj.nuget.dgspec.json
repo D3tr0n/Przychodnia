@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia — kopia\\Przychodnia\\api\\api.csproj": {}
+    "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia\\Przychodnia\\api\\api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia — kopia\\Przychodnia\\api\\api.csproj": {
+    "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia\\Przychodnia\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia — kopia\\Przychodnia\\api\\api.csproj",
+        "projectUniqueName": "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia\\Przychodnia\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia — kopia\\Przychodnia\\api\\api.csproj",
+        "projectPath": "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia\\Przychodnia\\api\\api.csproj",
         "packagesPath": "C:\\Users\\kacpe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia — kopia\\Przychodnia\\api\\obj\\",
+        "outputPath": "C:\\Users\\kacpe\\Desktop\\ProjektPrzychodnia\\Przychodnia\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kacpe\\AppData\\Roaming\\NuGet\\NuGet.Config"

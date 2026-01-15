@@ -15,7 +15,6 @@ using System.Security.Claims;
 using api.Mappers;
 
 
-
 namespace api.Controllers
 {
     [Route("api/account")]
@@ -58,8 +57,6 @@ namespace api.Controllers
             }
 
             var roles = await _userManager.GetRolesAsync(user);
-            var patient = await _context.Patients.FirstOrDefaultAsync(p => p.AccountId == user.Id);
-            string userPesel = patient?.Pesel ?? "";
 
             return Ok(
                 new NewUserDto
@@ -67,7 +64,7 @@ namespace api.Controllers
                     Username = user.UserName,
                     Email = user.Email,
                     Roles = roles,
-                    Token = _tokenService.CreateToken(user, roles, userPesel)
+                    Token = _tokenService.CreateToken(user, roles)
                 }
             );
         }
@@ -111,13 +108,13 @@ namespace api.Controllers
                             {
                                 Username = appUser.UserName,
                                 Email = appUser.Email,
-                                Token = _tokenService.CreateToken(appUser, roles, registerDto.Pesel),
+                                Token = _tokenService.CreateToken(appUser, roles)
                             }
                         );
                     }
                     else
                     {
-                        return StatusCode(500,roleResult.Errors);   
+                        return StatusCode(500,roleResult.Errors);
                     }
                 }
                 else
@@ -135,33 +132,29 @@ namespace api.Controllers
         [Authorize]
         public async Task<IActionResult> GetProfile()
         {
-            var userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
+            // Pobiera ID użytkownika z tokena
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); 
 
             if (string.IsNullOrEmpty(userId))
             {
                 return Unauthorized("Brak ID użytkownika w tokenie.");
             }
 
-            var patient = await _context.Patients
-                .FirstOrDefaultAsync(p => p.AccountId == userId);
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) return NotFound("Użytkownik nie istnieje.");
 
-            if (patient == null)
-            {
-                return NotFound("Nie znaleziono danych pacjenta dla tego konta.");
-            }
+            var patient = await _context.Patients.FirstOrDefaultAsync(p => p.AccountId == user.Id);
+            
+            if (patient == null) return NotFound("Dane pacjenta nie istnieją.");
 
-            return Ok(new
-            {
+            return Ok(new {
                 firstName = patient.FirstName,
                 lastName = patient.LastName,
-                email = User.FindFirstValue(ClaimTypes.Email), 
-                dateOfBirth = patient.DateOfBirth,
+                email = user.Email,
                 phoneNumber = patient.PhoneNumber,
                 pesel = patient.Pesel
-                
             });
-        }
-        
+}
 
         [HttpPost("register/doctor")]
         public async Task<IActionResult> RegisterDoctor([FromBody] RegisterDoctorDto registerDto)
@@ -189,7 +182,7 @@ namespace api.Controllers
 
                 return Ok(new {
                     UserName = appUser.UserName,
-                    Token = _tokenService.CreateToken(appUser, new List<string> { "Doctor" }, "")
+                    Token = _tokenService.CreateToken(appUser, new List<string> { "Doctor" })
                 });
             }
 
@@ -221,8 +214,6 @@ namespace api.Controllers
 
             return Ok(doctorDto);
         }
-
-        
 
     }
 }

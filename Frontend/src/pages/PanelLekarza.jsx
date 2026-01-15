@@ -37,34 +37,30 @@ export default function PanelLekarza() {
     if (!doctorData) return <div className="error">Nie udało się załadować profilu.</div>;
 
     return (
-    <div id="panel-container">
-        <div id="dane-grid">
-            <div className="kafelek">
-                <h2>Imię</h2>
-                <h3>{doctorData.firstName}</h3>
+        <div id="dane">
+            <div id="lewo">
+                <div className="info-box">
+                    <h2>Imię</h2>
+                    <h3>{doctorData.firstName}</h3>
+                </div>
+
+                <div className="info-box">
+                    <h2>Nazwisko</h2>
+                    <h3>{doctorData.lastName}</h3>
+                </div>
             </div>
 
-            <div className="kafelek">
-                <h2>Nazwisko</h2>
-                <h3>{doctorData.lastName}</h3>
-            </div>
+            <div id="prawo">
+                <div className="info-box">
+                    <h2>E-mail (Login)</h2>
+                    <h3>{doctorData.email}</h3>
+                </div>
 
-            <div className="kafelek">
-                <h2>E-mail (Login)</h2>
-                <h3>{doctorData.email}</h3>
-            </div>
-
-            <div className="kafelek">
-                <h2>Specjalizacja</h2>
-                <h3>{doctorData.specialization}</h3>
+                <div className="info-box">
+                    <h2>Specjalizacja</h2>
+                    <h3>{doctorData.specialization}</h3>
+                </div>
             </div>
         </div>
-        
-        <div className="button-area">
-            <button className="logout-btn" onClick={() => { localStorage.removeItem('token'); window.location.href='/'; }}>
-                Wyloguj się
-            </button>
-        </div>
-    </div>
-)
+    )
 }
