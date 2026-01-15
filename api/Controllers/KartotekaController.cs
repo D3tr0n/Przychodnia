@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using api.Data;
 using api.Dtos;
 using api.Models;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace api.Controllers
 {
@@ -15,6 +17,24 @@ namespace api.Controllers
         public KartotekaController(ApplicationDBContext context)
         {
             _context = context;
+        }
+
+
+        [HttpGet("moje-badania")]
+        [Authorize]
+        public async Task<IActionResult> GetMyRecords()
+        {
+            var userPesel = User.FindFirst(ClaimTypes.NameIdentifier)?.Value 
+                ?? User.FindFirst("sub")?.Value;
+
+            if (string.IsNullOrEmpty(userPesel))
+                return Unauthorized("Brak PESEL w tokenie");
+
+            var historia = await _context.Kartoteki
+                .Where(k => k.Pesel == userPesel)
+                .ToListAsync();
+
+            return Ok(historia);
         }
 
         [HttpPost]

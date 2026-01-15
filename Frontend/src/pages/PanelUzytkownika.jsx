@@ -62,60 +62,34 @@ export default function PanelUzytkownika() {
   if (!user) return null;
 
   return (
-    <div id="dane">
-      <div id="lewo">
-        <div id="imie">
-          <h2>Imię</h2>
-          <h3>{user.firstName || "Brak danych"}</h3>
-        </div>
-
-        <div id="nazwisko">
-          <h2>Nazwisko</h2>
-          <h3>{user.lastName || "Brak danych"}</h3>
-        </div>
-
-        <div id="email">
-          <h2>E-mail</h2>
-          <h3>{user.email || "Brak danych"}</h3>
-        </div>
-
-        <div id="data-urodzenia">
-          <h2>Data urodzenia</h2>
-          <h3>{user.dateOfBirth ? new Date(user.dateOfBirth).toLocaleDateString() : "brak"}</h3>
-        </div>
-      </div>
-
-      <div id="prawo">
-        <div id="telefon">
-          <h2>Nr. telefonu</h2>
-          <h3>{user.phoneNumber || "Brak danych"}</h3>
-        </div>
-
-        <div id="adres">
-          <h2>Adres</h2>
-          <h3>{user.address || "Brak danych"}</h3>
-        </div>
-
-        <div id="miasto">
-          <h2>Miasto</h2>
-          <h3>{user.city || "Brak danych"}</h3>
-        </div>
-
-        <div id="kod-pocztowy">
-          <h2>Kod pocztowy</h2>
-          <h3>{user.zipCode || "Brak danych"}</h3>
-        </div>
-
-        <div id="kraj">
-          <h2>Kraj</h2>
-          <h3>{user.country || "Polska"}</h3>
-        </div>
-        
-        <button onClick={() => { localStorage.removeItem('token'); navigate('/'); }} 
-                style={{marginTop: '20px', padding: '10px', cursor: 'pointer', background: 'red', color: 'white', border: 'none', borderRadius: '5px'}}>
-          Wyloguj
-        </button>
-      </div>
+    <div id="panel-container">
+  <div id="dane-grid">
+    <div className="kafelek">
+      <h2>Imię</h2>
+      <h3>{user.firstName || "Brak danych"}</h3>
     </div>
+
+    <div className="kafelek">
+      <h2>Nazwisko</h2>
+      <h3>{user.lastName || "Brak danych"}</h3>
+    </div>
+
+    <div className="kafelek">
+      <h2>E-mail</h2>
+      <h3>{user.email || "Brak danych"}</h3>
+    </div>
+
+    <div className="kafelek">
+      <h2>Nr. telefonu</h2>
+      <h3>{user.phoneNumber || "Brak danych"}</h3>
+    </div>
+  </div>
+
+  <div className="button-area">
+    <button className="logout-btn" onClick={() => { localStorage.removeItem('token'); navigate('/'); }}>
+      Wyloguj się
+    </button>
+  </div>
+</div>
   );
 }
