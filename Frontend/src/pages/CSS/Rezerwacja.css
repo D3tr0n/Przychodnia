@@ -1,0 +1,80 @@
+.rezerwacja-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+.form-grid {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+#panelrejestracja select {
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    padding: 0 10px;
+    width: 100%;
+}
+
+.doctors-list {
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.doctor-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.doctor-card:hover {
+    border-color: #3B82F6;
+}
+
+.doctor-card.active {
+    border-color: #3B82F6;
+    background-color: #eff6ff;
+    box-shadow: 0 0 0 2px #3B82F6;
+}
+
+.slots-container {
+    width: 100%;
+    text-align: left;
+}
+
+.slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.slot-btn {
+    background: white;
+    border: 1px solid #3B82F6;
+    color: #3B82F6;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.slot-btn:hover {
+    background: #3B82F6;
+    color: white;
+}
+
+.error-text {
+    color: #dc2626;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}

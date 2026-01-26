@@ -1,0 +1,10 @@
+.lista-wizyt-container { padding: 20px; max-width: 900px; margin: 0 auto; }
+.appointments-table { width: 100%; border-collapse: collapse; margin-top: 10px; background: white; }
+.appointments-table th, .appointments-table td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
+.status-badge { padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; }
+.status-badge.zaplanowana { background: #e3f2fd; color: #1976d2; }
+.status-badge.zakończona { background: #e8f5e9; color: #2e7d32; }
+.status-badge.odwołana { background: #ffebee; color: #c62828; }
+.action-btns { display: flex; gap: 5px; }
+.btn-done { background: #4caf50; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
+.btn-cancel { background: #f44336; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
