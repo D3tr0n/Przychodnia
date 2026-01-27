@@ -79,10 +79,6 @@ export default function PanelUzytkownika() {
           <h3>{user.email || "Brak danych"}</h3>
         </div>
 
-        <div id="data-urodzenia">
-          <h2>Data urodzenia</h2>
-          <h3>{user.dateOfBirth ? new Date(user.dateOfBirth).toLocaleDateString() : "brak"}</h3>
-        </div>
       </div>
 
       <div id="prawo">
@@ -91,30 +87,7 @@ export default function PanelUzytkownika() {
           <h3>{user.phoneNumber || "Brak danych"}</h3>
         </div>
 
-        <div id="adres">
-          <h2>Adres</h2>
-          <h3>{user.address || "Brak danych"}</h3>
-        </div>
 
-        <div id="miasto">
-          <h2>Miasto</h2>
-          <h3>{user.city || "Brak danych"}</h3>
-        </div>
-
-        <div id="kod-pocztowy">
-          <h2>Kod pocztowy</h2>
-          <h3>{user.zipCode || "Brak danych"}</h3>
-        </div>
-
-        <div id="kraj">
-          <h2>Kraj</h2>
-          <h3>{user.country || "Polska"}</h3>
-        </div>
-        
-        <button onClick={() => { localStorage.removeItem('token'); navigate('/'); }} 
-                style={{marginTop: '20px', padding: '10px', cursor: 'pointer', background: 'red', color: 'white', border: 'none', borderRadius: '5px'}}>
-          Wyloguj
-        </button>
       </div>
     </div>
   );

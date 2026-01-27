@@ -18,6 +18,8 @@ import Rejestracja from './pages/Rejestracja'
 import GodzinyPracy from './pages/GodzinyPracy'
 import ListaWizyt from './pages/ListaWizyt'
 import RejestracjaLekarza from './pages/RejestracjaLekarza'
+import HistoriaPacjenta from './pages/HistoriaPacjenta'
+
 
 function App() {
     const location = useLocation()
@@ -51,7 +53,8 @@ function App() {
                     location.pathname.startsWith('/PanelLekarza') ||
                     location.pathname.startsWith('/ListaWizyt') ||
                     location.pathname.startsWith('/GodzinyPracy') ||
-                    location.pathname.startsWith('/Kartoteka');
+                    location.pathname.startsWith('/Kartoteka') ||
+                    location.pathname.startsWith('/HistoriaPacjenta');
 
     return (
         <>
@@ -70,6 +73,7 @@ function App() {
                                     <Link to="/ListaWizyt">Lista Wizyt</Link>
                                     <Link to="/GodzinyPracy">Godziny Pracy</Link>
                                     <Link to="/Kartoteka">Kartoteka Pacjentów</Link>
+                                    <Link to="/HistoriaPacjenta">Historia Pacjenta</Link>
                                 </>
                             ) : (
                                 <>
@@ -129,6 +133,7 @@ function App() {
                 <Route path="/GodzinyPracy" element={<GodzinyPracy />} />
                 <Route path="/ListaWizyt" element={<ListaWizyt />} />
                 <Route path="/rejestracjalekarza" element={<RejestracjaLekarza />} />
+                <Route path="/HistoriaPacjenta" element={<HistoriaPacjenta />} />
             </Routes>
 
             <footer>
