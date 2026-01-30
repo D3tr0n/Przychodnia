@@ -31,12 +31,12 @@ namespace api.Service
         new Claim(JwtRegisteredClaimNames.GivenName, user.UserName),
         // Kluczowe poprawki:
         new Claim(ClaimTypes.Name, user.UserName),
-        new Claim(ClaimTypes.NameIdentifier, user.Id), // Tu MUSI być ID użytkownika
-        new Claim("PESEL", pesel ?? ""), // PESEL dajemy jako osobny, własny Claim
-        new Claim("UserId", user.Id) // Zostawiamy dla kompatybilności z Twoim Reactem
+        new Claim(ClaimTypes.NameIdentifier, user.Id),
+        new Claim("PESEL", pesel ?? ""),
+        new Claim("UserId", user.Id)
     };
 
-    // Poprawne dodawanie ról
+    
     claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
     var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
